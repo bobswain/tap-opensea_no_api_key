@@ -1,0 +1,22 @@
+version: 1
+send_anonymous_usage_stats: true
+project_id: "tap-opensea_no_api_key"
+plugins:
+  extractors:
+    - name: "tap-opensea_no_api_key"
+      namespace: "tap_opensea_no_api_key"
+      pip_url: -e .
+      capabilities:
+        - state
+        - catalog
+        - discover
+      config:
+        start_date: "2010-01-01T00:00:00Z"
+      settings:
+        # TODO: To configure using Meltano, declare settings and their types here:
+        - name: start_date
+          value: "2010-01-01T00:00:00Z"
+  loaders:
+    - name: target-jsonl
+      variant: andyh1203
+      pip_url: target-jsonl
